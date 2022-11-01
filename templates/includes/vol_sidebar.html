@@ -1,0 +1,67 @@
+{% load custom_tags %}
+<nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo d-block text-left">
+
+            <div class="logo scrollto mb-1">
+                <img src="/static/assets/img/Logo/logo1.png" alt="" class="img-fluid" style="height:46px;"><br>
+                <hr>
+            </div>
+            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div mb-4">
+            <ul class="nav pcoded-inner-navbar mb-4">
+
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                    class="nav-item {% if 'index' in segment %} active {% endif %}">
+                    <a href="{% url 'dashboard' %}" class="nav-link "><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                </li>
+
+                <!-- {% if request.user.is_superuser or request.user.pageroles.data|has_group:'masterdefaultCheck0' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="masterdefaultCheck0">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-user-lock"></i></span><span class="pcoded-mtext">Master Table</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idvol' %}
+                            <li class="" id="idvol"><a href="{% url 'volunteer_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Volunteer Type Master
+                                </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %} -->
+                
+
+                <!-- {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck1' %} -->
+                <li class="nav-item" id="othdefaultCheck1"><a href="{% url 'admin_board_list' %}" class=""><span
+                            class="pcoded-micon"><i class="fas fa-id-card-alt"></i></span><span
+                            class="pcoded-mtext">Beneficary List
+                        </span></a></li>
+                <!-- {% endif %} -->
+                <li class="nav-item" id="othdefaultCheck2"><a href="#" class=""><span
+                            class="pcoded-micon"><i class="fas fa-pen-square"></i></span><span
+                            class="pcoded-mtext">Donor List
+                        </span></a></li>
+                <li class="nav-item" id="othdefaultCheck2"><a href="#" class=""><span
+                            class="pcoded-micon"><i class="fas fa-pen-square"></i></span><span
+                            class="pcoded-mtext">New Applicantions
+                        </span></a></li>
+                <li class="nav-item" id="othdefaultCheck2"><a href="#" class=""><span
+                            class="pcoded-micon"><i class="fas fa-pen-square"></i></span><span
+                            class="pcoded-mtext">Beneficiary Performance Validation
+                        </span></a></li>
+                <li class="nav-item" id="othdefaultCheck2"><a href="#" class=""><span
+                            class="pcoded-micon"><i class="fas fa-pen-square"></i></span><span
+                            class="pcoded-mtext">Other Tasks
+                        </span></a></li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>

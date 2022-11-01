@@ -1,0 +1,322 @@
+{% load custom_tags %}
+<nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo d-block text-left">
+
+            <div class="logo scrollto mb-1">
+                <img src="/static/assets/img/Logo/logo1.png" alt="" class="img-fluid" style="height:46px;"><br>
+                <hr>
+            </div>
+            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div mb-4">
+            <ul class="nav pcoded-inner-navbar mb-4">
+
+                <!---------------------------------- Admin Sidebar Start---------------------------------->
+                {% if request.user.is_superuser is True %}
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                    class="nav-item {% if 'index' in segment %} active {% endif %}">
+                    <a href="{% url 'index' %}" class="nav-link "><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                </li>
+                {% elif request.user.Vol_model.is_active is True %}
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                    class="nav-item {% if 'dashboard' in segment %} active {% endif %}">
+                    <a href="{% url 'vol_dashboard' %}" class="nav-link "><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                </li>
+                {% elif request.user.Emp_model.is_active is True %}
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                    class="nav-item {% if 'dashboard' in segment %} active {% endif %}">
+                    <a href="{% url 'emp_dashboard' %}" class="nav-link "><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'masterdefaultCheck0' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="masterdefaultCheck0">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-user-lock"></i></span><span class="pcoded-mtext">Master Table</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idvol' %}
+                            <li class="" id="idvol"><a href="{% url 'volunteer_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Volunteer Type Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idben' %}
+                            <li class="" id="idben"><a href="{% url 'beneficiary_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Beneficiary Type Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'iddon' %}
+                            <li class="" id="iddon"><a href="{% url 'donor_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Donor Type Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idcon' %}
+                            <li class="" id="idcon"><a href="{% url 'country_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Country Rank Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idstate' %}
+                            <li class="" id="idstate"><a href="{% url 'state_master' %}" class=""><i class="fa fa-minus mr-2"></i>State Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idcity' %}
+                            <li class="" id="idcity"><a href="{% url 'city_master' %}" class=""><i class="fa fa-minus mr-2"></i>City Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idzon' %}
+                            <li class="" id="idzon"><a href="{% url 'zone_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Zone Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idexpns' %}
+                            <li class="" id="idexpns"><a href="{% url 'expense_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Expense Type Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idincome' %}
+                            <li class="" id="idincome"><a href="{% url 'income_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Income Type Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idgrad' %}
+                            <li class="" id="idgrad"><a href="{% url 'grade_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Grade Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idedu' %}
+                            <li class="" id="idedu"><a href="{% url 'education_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Education Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idprof' %}
+                            <li class="" id="idprof"><a href="{% url 'profession_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Profession Type Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idinst' %}
+                            <li class="" id="idinst"><a href="{% url 'institute_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Institute Master
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'idemp' %}
+                            <li class="" id="idemp"><a href="{% url 'employee_master' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Employee Type Master
+                                </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'dondefaultCheck0' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="dondefaultCheck0">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="far fa-user"></i></span><span class="pcoded-mtext">Donor</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'dondefaultCheck1' %}
+                            <li class="" id="dondefaultCheck1"><a href="{% url 'donor_list' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Donor List
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'dondefaultCheck2' %}
+                            <li class="" id="dondefaultCheck2"><a href="#" class=""><i
+                                        class="fa fa-minus mr-2"></i>Donor Approval Request
+                                </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'voldefaultCheck0' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="voldefaultCheck0">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-user-friends"></i></span><span class="pcoded-mtext">Volunteer</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'voldefaultCheck1' %}
+                            <li class="" id="voldefaultCheck1"><a href="{% url 'volunteers_list' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Volunteer List
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'voldefaultCheck2' %}
+                            <li class="" id="voldefaultCheck2"><a href="#" class=""><i
+                                        class="fa fa-minus mr-2"></i>Volunteer Approval Request
+                                </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'bendefaultCheck0' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="bendefaultCheck0">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="far fa-address-card"></i></i></span><span
+                            class="pcoded-mtext">Beneficiary</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'bendefaultCheck1' %}
+                            <li class="" id="bendefaultCheck1"><a href="{% url 'beneficiarys_list' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Beneficiary List
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'bendefaultCheck2' %}
+                            <li class="" id="bendefaultCheck2"><a href="{% url 'new_ben_approval' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Beneficiary Approval Request 
+                                </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'income_forcast' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="income_forcast">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-user-friends"></i></span><span class="pcoded-mtext">Income
+                            Forecast</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            <!-- {% if request.user.is_superuser or request.user.pageroles.data|has_group:'voldefaultCheck1' %} -->
+                            <li class="" id="voldefaultCheck1"><a href="{% url 'income_for_list' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Income Forecast List
+                                </a></li>
+                            <!-- {% endif %} -->
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'expense_forcast' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu d-none" id="expense_forcast">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-user-friends"></i></span><span class="pcoded-mtext">Expense
+                            Forecast</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            <!-- {% if request.user.is_superuser or request.user.pageroles.data|has_group:'voldefaultCheck1' %} -->
+                            <li class="" id="expfrcst"><a href="{% url 'expense_for_list' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>Expense Forecast List
+                                </a></li>
+                            <!-- {% endif %} -->
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'gen_exp' %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="gen_exp">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-user-friends"></i></span><span class="pcoded-mtext">General
+                            Expense</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            {% if request.user.is_superuser or request.user.pageroles.data|has_group:'explist' %}
+                            <li class="" id="explist"><a href="{% url 'gen_exp_list' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>General Expense List
+                                </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck1' %}
+                <li class="nav-item" id="othdefaultCheck1"><a href="{% url 'central_admin_list' %}" class=""><span
+                            class="pcoded-micon"><i class="fas fa-id-card-alt"></i></span><span
+                            class="pcoded-mtext">Central Admin List
+                        </span></a></li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck2' %}
+                <li class="nav-item" id="othdefaultCheck2"><a href="{% url 'finance_sup_list' %}" class=""><span
+                            class="pcoded-micon"><i class="fas fa-pen-square"></i></span><span
+                            class="pcoded-mtext">Finance Sup list
+                        </span></a></li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck3' %}
+                <li class="nav-item" id="othdefaultCheck3"><a href="{% url 'central_sup_list' %}" class=""><span
+                            class="pcoded-micon"><i class="fas fa-archive"></i></span><span class="pcoded-mtext">Central
+                            Supervisor List
+                        </span></a></li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck4' %}
+                <li class="nav-item" id="othdefaultCheck4"><a href="{% url 'finance_admin_list' %}" class=""><span
+                            class="pcoded-micon"><i class="fas fa-archive"></i></span><span class="pcoded-mtext">Finance Admin List
+                        </span></a></li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck4' %}
+                <li class="nav-item" id="othdefaultCheck4"><a href="#" class=""><span class="pcoded-micon"><i
+                                class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Payment Approval
+                        </span></a></li>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.pageroles.data|has_group:'othdefaultCheck5' %}
+                <li class="nav-item" id="othdefaultCheck5"><a href="#" class=""><span class="pcoded-micon"><i
+                                class="fas fa-coins"></i></span><span class="pcoded-mtext">Account & Finance
+                        </span></a></li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <li class="nav-item" id="othdefaultCheck5"><a href="{% url 'access_list' %}" class=""><span
+                            class="pcoded-micon"><i class="fas fa-universal-access"></i></span><span
+                            class="pcoded-mtext">User Access Control
+                        </span></a></li>
+                {% endif %}
+                <!---------------------------------- Admin Sidebar End---------------------------------->
+
+                <!---------------------------------- Volunteer Sidebar Start---------------------------------->
+                {% if request.user.Vol_model.is_active is True %}
+                <li class="nav-item" id="vol_ben_list"><a href="{% url 'vol_ben_list' %}" class=""><span class="pcoded-micon"><i
+                                class="far fa-address-card"></i></span><span class="pcoded-mtext">My Beneficarys
+                        </span></a></li>
+                <li class="nav-item" id="vol_don_list"><a href="{% url 'vol_donor_list' %}" class=""><span
+                            class="pcoded-micon"><i class="far fa-user"></i></span><span class="pcoded-mtext">My Donors
+                        </span></a>
+                </li>
+                
+                <li class="nav-item" id="vol_benperf_list"><a href="#" class=""><span class="pcoded-micon"><i
+                                class="fas fa-graduation-cap"></i></span><span class="pcoded-mtext">Beneficiary
+                            Performance
+                            Validation
+                        </span></a></li>
+                <li class="nav-item mt-3" id="vol_other_list"><a href="#" class=""><span class="pcoded-micon"><i
+                                class="fas fa-tasks"></i></span><span class="pcoded-mtext">Other Tasks
+                        </span></a></li>
+                {% endif %}
+                <!---------------------------------- Volunteer Sidebar End---------------------------------->
+
+                <!---------------------------------- Employee Sidebar Start---------------------------------->
+                {% if request.user.user_type ==  "2" %}
+                {% if request.user.Emp_model.is_active is True %}
+                <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds"
+                    class="nav-item pcoded-hasmenu" id="expense_forcast">
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                class="fas fa-file-alt"></i></span><span class="pcoded-mtext">New
+                            Applications</span></a>
+                    <ul class="pcoded-submenu">
+                        <div class="nav-item">
+                            {% if request.user.Emp_model.etype == "1" or request.user.Emp_model.etype == "3" %}
+                            <li class="" id="np_ben"><a href="{% url 'new_application_ben' %}" class=""><i
+                                        class="fa fa-minus mr-2"></i>New Beneficiary
+                                </a></li>
+                            {% endif %}
+                            {% if request.user.Emp_model.etype == "4" %}
+                            <li class="" id="np_don"><a href="{% url 'new_application_donor' %}" class=""><i
+                                class="fa fa-minus mr-2"></i>New Donor
+                            </a></li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </li>
+                {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

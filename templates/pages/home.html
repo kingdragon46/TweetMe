@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            TweetMe
+            {% block title %}{% endblock %}
+        </title>
+        <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 10]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="canonical"
+              href="https://appseed.us/admin-dashboards/django-dashboard-dattaable">
+        <!-- Favicon icon -->
+        <link rel="icon"
+              href="/static/assets/images/favicon1.ico"
+              type="image/x-icon">
+        <!-- fontawesome icon -->
+        <link rel="stylesheet"
+              href="/static/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+        <!-- animation css -->
+        <link rel="stylesheet"
+              href="/static/assets/plugins/animation/css/animate.min.css">
+        <!-- vendor css -->
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+        <!--DataTable CSS-->
+        <link rel="stylesheet"
+              href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+        <link rel="stylesheet"
+              href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+        <!-- DatePicker -->
+        <!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
+        <link href="/static/assets/vendor/datepicker/daterangepicker.css"
+              rel="stylesheet"
+              media="all">
+        <!-- Specific CSS goes HERE -->
+        <!-- Selectize -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+              rel="stylesheet"/>
+        <!-- Datatable buttons -->
+        <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"
+              rel="stylesheet"/>
+        {% block stylesheets %}
+        {% endblock stylesheets %}
+    </head>
+    <body>
+        <!-- [ Pre-loader ] start -->
+        <div class="loader-bg">
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+        <!-- Top Bar -->
+        {% include 'includes/navigation.html' %}
+        <!-- SideBar -->
+        {% comment %} {% include 'includes/sidebar.html' %} {% endcomment %}
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        {% block content %}
+                            <!--[ Recent Complaints ] start-->
+                            <div class="col-xl-8 col-md-6 mt-4">
+                                <div class="card Recent-Users" style="padding: 10px;" id="RecentUsers">
+                                    <div class="card-header">
+                                        <h5>Latest Tweets</h5>
+                                    </div>
+                                    <div class="card-block px-0 py-3">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    {% for SR in obj %}
+                                                        <tr class="unread">
+                                                            <td>
+                                                                <img class="rounded-circle"
+                                                                     style="width:40px;"
+                                                                     src="/static/assets/images/user/avatar-2.jpg"
+                                                                     alt="activity-user">
+                                                            </td>
+                                                        </td>
+                                                        <td>
+                                                            <p style="color: black;">{{ forloop.counter }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <h6 class="text">
+                                                                <i class="fas fa-circle text-c-red f-10 m-r-15"></i>{{ SR.content }}
+                                                            </h6>
+                                                        </td>
+                                                        <td><p style="color: black;">{{SR.tweet_creation_date}}</p></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--[ Recent Users ] end-->
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+        {% include 'includes/scripts.html' %}
+        <!-- Specific Page JS goes HERE  -->
+        {% block javascripts %}
+        <script>
+            const tweetsElement = document.getElementById("tweets")
+            
+
+            const xhr = new XMLHttpRequest()
+            const method = 'GET'
+            const url = "/tweets/"
+            const responseType = "json"
+            
+            xhr.responseType = responseType
+            xhr.open(method, url)
+            xhr.onload = function(){
+                const serverResponse = xhr.response
+                var listedItems = serverResponse.response
+                var finalTweetStr = ""
+                var i;
+                for (i=0;i<listedItems.length;i++){
+                    console.log(i)
+                }
+            }
+
+        </script>
+        {% endblock javascripts %}
+    </body>
+</html>
